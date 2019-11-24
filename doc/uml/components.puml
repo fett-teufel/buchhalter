@@ -1,0 +1,21 @@
+@startuml
+
+package "REST API" {
+HTTP - [Spring Kotlin APP]
+[DJVUReader] - HTTP
+[Search UI] - HTTP
+}
+
+package "DataBase" {
+[Spring Kotlin APP] - [Postgresql]
+
+}
+
+package "FullTextSearch" {
+[Spring Kotlin APP] - [Manticora - search engine]
+}
+package "FileStorage" {
+[Spring Kotlin APP] - [Minio (file storage)]
+}
+
+@enduml

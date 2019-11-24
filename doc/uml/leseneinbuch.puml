@@ -1,0 +1,14 @@
+@startuml
+User -> "Search UI": select book link
+"Search UI" -> Minio: receive book
+Minio --> "Search UI": return book file
+"Search UI" --> FileViewer: load viewer
+"Search UI" --> FileViewer: give file
+"FileViewer" -> REST: get information about user read book and current page
+REST --> Postgres: find information about book position
+Postgres --> REST: return information about book position
+REST --> FileViewer: return information about book position
+"FileViewer" -> User: render book file
+"FileViewer" -> REST: send information about user read book and current page
+REST -> Postgres: Store information about book position
+@enduml

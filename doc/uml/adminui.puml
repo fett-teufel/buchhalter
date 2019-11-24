@@ -1,0 +1,13 @@
+@startuml
+User -> REST: Upload Book
+REST --> Postgres: Store info about file uploading
+REST --> Minio: Store file
+Minio --> REST: Confirm store
+REST --> Postgres: Modify file uploading info as confirmed
+REST -> User: Request book specification
+User -> REST: Fill information, tagging
+REST -> Postgres: associate specification with minio info
+REST -> User: confirmed
+REST -> Manticora: update fulltext search
+
+@enduml
