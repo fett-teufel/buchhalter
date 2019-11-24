@@ -1,0 +1,6 @@
+@startuml
+User -> REST: fill fulltex search request
+REST --> Manticora: form request about book
+Manticora ---> REST: return book list
+REST -> User: return formated list with association with minion files
+@enduml
